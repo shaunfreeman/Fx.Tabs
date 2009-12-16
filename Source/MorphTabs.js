@@ -7,14 +7,14 @@ license: MIT-style
 requires:
 - core/1.2: [Selectors, DomReady, Fx.Morph, Fx.Transitions, Request.HTML]
 provides: [MorphTabs]
-version 1.3
+version 1.4
 ...
 */
 
 var MorphTabs = new Class({
 	Implements: [Options, Chain],
  
-	version: '1.3',
+	version: '1.4',
  
 	options: {
 		width: '300px',
@@ -48,7 +48,8 @@ var MorphTabs = new Class({
 			'width': this.options.width
 		});
 		 
-		this.titles = $$('#' + this.elid + ' ul li');
+		this.titles = $$('#' + this.elid + ' ul.morphtabs_title li');
+		//console.log(this.titles);
 		
 		this.panelHeight = this.options.height.toInt() - (this.titles[0].getSize().y + 4);
 		this.panelWidth = this.el.getSize().x;
