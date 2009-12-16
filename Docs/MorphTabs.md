@@ -61,7 +61,7 @@ How to use
 	#JS
 	window.addEvent('domready', function() {
         var morphTabs = new MorphTabs('id_of_container', {options});
-});
+	});
 
 ###The XHTML part
 
