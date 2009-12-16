@@ -27,7 +27,7 @@ MorphTabs styles
 	font-weight: bold;
 }
 
-.morphs_title li.active {
+.morphtabs_title li.active {
 	background-color: #49A8EC;
 }
 

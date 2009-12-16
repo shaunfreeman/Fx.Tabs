@@ -7,13 +7,13 @@ license: MIT-style
 requires:
 - core/1.2: [Selectors, DomReady, Fx.Morph, Fx.Transitions, Request.HTML]
 provides: [MorphTabs]
-version 1.1
+version 1.2
 ...
 */
 var MorphTabs = new Class({
 	Implements: [Events, Options, Chain],
  
-	version: '1.1',
+	version: '1.2',
  
 	options: {
 		width: '300px',
@@ -31,7 +31,9 @@ var MorphTabs = new Class({
 		useAjax: false,
 		ajaxUrl: '',
 		ajaxOptions: {},
-		ajaxLoadingText: 'Loading...'
+		ajaxLoadingText: 'Loading...',
+		slideShow: false,
+		slideShowDelay: 3
 	},
  
 	initialize: function(element, options) {
@@ -75,6 +77,7 @@ var MorphTabs = new Class({
 				this.activate(this.options.activateOnLoad);
 			}
 		}
+		if (this.options.slideShow) this.start();
 	},
  
 	attach: function(elements) {
@@ -165,6 +168,14 @@ var MorphTabs = new Class({
 			element.removeClass(this.options.mouseOverClass);
 			this.activate(element);
 		}
+		
+		if (this.slideShow) {
+			this.setOptions(this.slideShow, false);
+			this.clearChain();
+			this.stop();
+			this.panel.store('fxEffect:flag', 'show');
+		}
+		
 	},
  
 	fill: function(element, contents) {
@@ -215,6 +226,14 @@ var MorphTabs = new Class({
 		this.detach(tab);
 	},
  
+	start: function() {
+		this.slideShow = this.next.periodical(this.options.slideShowDelay * 1000, this);
+	},
+ 
+	stop: function() {
+		$clear(this.slideShow);
+	},
+ 
 	next: function() {
 		var nextTab = this.activeTitle.getNext();
 		if(!nextTab) {
@@ -232,7 +251,9 @@ var MorphTabs = new Class({
 	},
 	
 	getPanelFx: function(fx) {
-		var flag = (this.firstRun) ? this.panel.retrieve('fxEffect:flag', 'show') : this.panel.retrieve('fxEffect:flag');
+		
+		this.flag = (this.firstRun) ? this.panel.retrieve('fxEffect:flag', 'show') : this.panel.retrieve('fxEffect:flag');
+		
 		var styles = {
 			'margin-top': [0, 0],
 			'margin-left': [0, 0],
@@ -240,10 +261,10 @@ var MorphTabs = new Class({
 			'height': [this.panelHeight, this.panelHeight],
 			'opacity': [1, 1]
 		};
-		var fxEffect = this.panel.get('morph', this.options.changeTransition);
+		fxEffect = this.panel.get('morph', this.options.changeTransition);
 		switch(fx) {
 			case 'blind:up':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'height': [this.panelHeight, 0]
 				}));
@@ -255,7 +276,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'blind:down':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'margin-top': [this.panelHeight],
 					'height': [0]
@@ -267,7 +288,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'blind:left':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'width': [this.panelWidth, 0]
 				}));
@@ -279,7 +300,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'blind:right':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'margin-left': [this.panelWidth],
 					'width': [0]
@@ -291,7 +312,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'slide:up':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'margin-top': [0, -this.panelHeight],
 					'width': [this.panelWidth],
@@ -304,7 +325,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'slide:down':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'margin-top': [0, this.panelHeight],
 					'width': [this.panelWidth],
@@ -317,7 +338,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'slide:left':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'margin-left': [0, -this.panelWidth],
 					'width': [this.panelWidth],
@@ -330,7 +351,7 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'slide:right':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'margin-left': [0, this.panelWidth],
 					'width': [this.panelWidth],
@@ -343,21 +364,21 @@ var MorphTabs = new Class({
 					}
 					break;
 			case 'fade':
-					if (flag == 'hide') {
+					if (this.flag == 'hide') {
 				styles = fxEffect.start($merge(styles, {
 					'opacity': [1, 0]
 				}));
 					}
 					break;
 			case 'appear':
-					if (flag == 'show') {
+					if (this.flag == 'show') {
 				styles = fxEffect.start($merge(styles, {
 					'opacity': [0, 1]
 				}));
 					}
 					break;
 		}
-		this.panel.store('fxEffect:flag', (flag == 'hide') ? 'show' : 'hide');
+		this.panel.store('fxEffect:flag', (this.flag == 'hide') ? 'show' : 'hide');
 		if (this.firstRun) this.firstRun = false;
 		return styles;
 	}

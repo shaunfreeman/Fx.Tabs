@@ -35,15 +35,24 @@ var selectTrans = new Class({
 		var divs = $$('#' + element + ' div');
 		
 		divs.each(function(element) {
+			
+			var selectOptions = null;
+			
 			var selectBox = new Element('select').inject(element);
 			
 			var opt = element.id.split("_");
 			
 			if (opt[0].contains('Fx')) {
-				var fx = this.options.commonFx;
-				selectOptions = fx.include(this.options[opt[opt.length - 1]]);
+				this.fx = [];
+				
+				this.fx = this.options.commonFx;
+				if (opt[0].contains('Start')) {
+					selectOptions = this.fx.include(this.options.panelStartFx);
+				} else {
+					selectOptions = this.fx.include(this.options.panelEndFx).erase(this.options.panelStartFx);
+				}
 			} else {
-				var selectOptions = this.options[opt[opt.length - 1]];
+				selectOptions = this.options[opt[opt.length - 1]];
 			}
 			
 			selectOptions.each(function(selectValue) {

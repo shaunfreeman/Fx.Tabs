@@ -4,13 +4,13 @@
 	
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>MorphTabs Demo</title>
+	<title>MorphTabs Accordian Demo</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 	<title>mooForms demo | Shaun Freeman</title>
 	<script type="text/javascript" src="./js/mootools-1.2-core.js"></script>
 	<script type="text/javascript" src="./js/mootools-1.2-more.js"></script>
-	<script type="text/javascript" src="../Source/morphtabs.js"></script>
+	<script type="text/javascript" src="../Source/MorphTabs.js"></script>
 	<script type="text/javascript" src="./js/selectTrans.js"></script>
 	<link href="./css/morphtabs.css" rel="stylesheet" type="text/css" />
 
@@ -31,15 +31,16 @@
 								onActive: function(toggler, element){
 
 									toggler.setStyle('color', '#41464D');
-
 								},
 
 								onBackground: function(toggler, element){
 
 									toggler.setStyle('color', '#528CE0');
 
+								},
+								onComplete: function(toggler, element) {
+									var myFx = new Fx.Scroll($(tab)).toElement(toggler);
 								}
-
 							});
 							break;
 					}
@@ -158,7 +159,7 @@
 </head>
 <body>
 	<!-- content starts here -->
-	<h1>morphTabs Demo</h1>
+	<h1>morphTabs Accordian Demo</h1>
 	
 	<div id="morphtabs_transitions">
 		<div id="changeTransition_transition" class="changeTrans"><p>Fx.Transition: </p></div>

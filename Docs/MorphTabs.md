@@ -45,6 +45,8 @@ How to use
 * panelEndFx: (*string*), same as panelStartFx but for the type of effect when transition ends. See panelStartFx for options (Default: 'blind:right')
 * mouseOverClass: (*string*), The CSS Class name you want to use when a tab is mousedover (Default: 'over')
 * activateOnLoad: (*string*), can be set to 'first' to activate the first tab on load, 'none' to leave all the tabs hidden on load, or any tab's title to activate this tab on load (Default: 'first')
+* slideShow: (*boolean*), whether to start the tabs in slideshow mode or not. (Default: false)
+* slideShowDelay: (*interger*), the number of seconds to delay before showing next tab. (Default: 3)
 * activateTabFunction: (*function*), the function to call when a tab is activated, useful to execute any javascript events. It takes one argument which is the tab id. (Default: empty function)
 * evalScripts: (*boolean*), whether to execute any javascript in the panel div or not. (Default: false)
 * useAjax: (*boolean*), Whether you want to use Ajax to retrive tab content or not. (Default: false)
