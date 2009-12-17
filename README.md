@@ -7,7 +7,7 @@ I have also added some new effects which I hope you all will like!
 
 Because Fx.Tabs is based heaverly on mootabs some of the options and documentation is the same, but there are some important changes to note.
 
-![Screenshot](http://github.com/vincentbluff/MorphTabs/raw/master/screenshot.png)
+![Screenshot](http://github.com/vincentbluff/Fx.Tabs/raw/master/screenshot.png)
 
 Requirements
 ------------

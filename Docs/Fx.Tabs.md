@@ -1,13 +1,13 @@
-MorphTabs - an advanced Tab swapper
+Fx.Tabs - An Advanced Tab Swapper
 ====================================
 
-MorphTabs is a complete clone of mooTabs by [silverscripting](http://www.silverscripting.com/mootabs/). I have updated it for mootools 1.2 and it will not work with mootool 1.11 and below.
+Fx.Tabs is a complete clone of mooTabs by [silverscripting](http://www.silverscripting.com/mootabs/). I have updated it for mootools 1.2 and it will not work with mootool 1.11 and below.
 
 I have also added some new effects which I hope you all will like!
 
-Because MorphTabs is based heaverly on mootabs some of the options and documentation is the same, but there are some important changes to note.
+Because Fx.Tabs is based heaverly on mootabs some of the options and documentation is the same, but there are some important changes to note.
 
-![Screenshot](http://github.com/vincentbluff/MorphTabs/raw/master/screenshot.png)
+![Screenshot](http://github.com/vincentbluff/Fx.Tabs/raw/master/screenshot.png)
 
 Requirements
 ------------
@@ -18,7 +18,7 @@ How to use
 ----------
 
 ### Syntax
-	new MorphTabs('element_id', {options});
+	new Fx.Tabs('element_id', {options});
 
 ### Arguments
 
@@ -60,7 +60,7 @@ How to use
 
 	#JS
 	window.addEvent('domready', function() {
-        var morphTabs = new MorphTabs('id_of_container', {options});
+        var fxTabs = new Fx.Tabs('id_of_container', {options});
 	});
 
 ###The XHTML part
