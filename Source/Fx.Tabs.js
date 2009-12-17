@@ -11,7 +11,7 @@ requires:
 	core/1.2: [Selectors, DomReady, Fx.Morph, Fx.Transitions, Request.HTML]
 provides:
 	- Fx.Tabs
-version: 1.4
+version: 1.5
 
 ...
 */
