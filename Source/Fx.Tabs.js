@@ -9,8 +9,7 @@ license:
 	- MIT-style
 requires:
 	core/1.2: [Selectors, DomReady, Fx.Morph, Fx.Transitions, Request.HTML]
-provides:
-	- Fx.Tabs
+provides: [Fx.Tabs]
 version: 1.5
 
 ...
