@@ -4,13 +4,13 @@
 	
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>MorphTabs Accordian Demo</title>
+	<title>Fx.Tabs Accordian Demo</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 	<title>mooForms demo | Shaun Freeman</title>
 	<script type="text/javascript" src="./js/mootools-1.2-core.js"></script>
 	<script type="text/javascript" src="./js/mootools-1.2-more.js"></script>
-	<script type="text/javascript" src="../Source/MorphTabs.js"></script>
+	<script type="text/javascript" src="../Source/Fx.Tabs.js"></script>
 	<script type="text/javascript" src="./js/selectTrans.js"></script>
 	<link href="./css/morphtabs.css" rel="stylesheet" type="text/css" />
 
@@ -18,7 +18,7 @@
 
 		window.addEvent('domready', function() {
 	
-			var morphTabs = new MorphTabs('morphTabs', {
+			var fxTabs = new Fx.Tabs('morphTabs', {
 				width: '80%',
 				height: '250px',
 				activateTabFunction: function (tab) {
@@ -47,7 +47,7 @@
 				}
 			});
 			
-			var selectTransitions = new selectTrans('morphtabs_transitions', morphTabs);
+			var selectTransitions = new selectTrans('morphtabs_transitions', fxTabs);
 			
 		});
 
@@ -159,7 +159,7 @@
 </head>
 <body>
 	<!-- content starts here -->
-	<h1>morphTabs Accordian Demo</h1>
+	<h1>Fx.Tabs Accordian Demo</h1>
 	
 	<div id="morphtabs_transitions">
 		<div id="changeTransition_transition" class="changeTrans"><p>Fx.Transition: </p></div>

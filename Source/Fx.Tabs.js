@@ -1,25 +1,25 @@
 /*
 ---
 
-name: MorphTabs.js
+name: Fx.Tabs.js
 description: Handles the scripting for a common UI layout; the tabbed box.
-authors: 
+authors:
 	- Shaun Freeman
-license: 
+license:
 	- MIT-style
 requires:
 	core/1.2: [Selectors, DomReady, Fx.Morph, Fx.Transitions, Request.HTML]
 provides:
-	- MorphTabs
+	- Fx.Tabs
 version: 1.4
 
 ...
 */
 
-var MorphTabs = new Class({
+Fx.Tabs = new Class({
 	Implements: [Options, Chain],
  
-	version: '1.4',
+	version: '1.5',
  
 	options: {
 		width: '300px',
