@@ -1,6 +1,8 @@
 Fx.Tabs - An Advanced Tab Swapper
 ====================================
 
+Fx.Tabs is the new name for MorphTabs.
+
 Fx.Tabs is a complete clone of mooTabs by [silverscripting](http://www.silverscripting.com/mootabs/). I have updated it for mootools 1.2 and it will not work with mootool 1.11 and below.
 
 I have also added some new effects which I hope you all will like!
