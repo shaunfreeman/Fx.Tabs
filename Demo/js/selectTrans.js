@@ -30,7 +30,7 @@ var selectTrans = new Class({
 		panelEndFx: ['appear']
 	},
  
-	initialize: function(element,morphTabs) {
+	initialize: function(element,fx) {
 		
 		var divs = $$('#' + element + ' div');
 		
@@ -47,9 +47,9 @@ var selectTrans = new Class({
 				
 				this.fx = this.options.commonFx;
 				if (opt[0].contains('Start')) {
-					selectOptions = this.fx.include(this.options.panelStartFx);
+					selectOptions = this.fx.include(this.options.startFx);
 				} else {
-					selectOptions = this.fx.include(this.options.panelEndFx).erase(this.options.panelStartFx);
+					selectOptions = this.fx.include(this.options.endFx).erase(this.options.startFx);
 				}
 			} else {
 				selectOptions = this.options[opt[opt.length - 1]];
@@ -62,7 +62,7 @@ var selectTrans = new Class({
 				}).inject(selectBox);
 			});
 			
-			var selectChange = selectBox.retrieve('selectBox:change', this.elementChange.bindWithEvent(this, morphTabs));
+			var selectChange = selectBox.retrieve('selectBox:change', this.elementChange.bindWithEvent(this, fx));
 			
 			selectBox.addEvents({
 				change: selectChange
@@ -70,14 +70,16 @@ var selectTrans = new Class({
 		},this);
 	},
  
-	elementChange: function(event, morphTabs) {
+	elementChange: function(event, fx) {
 		var event = new Event(event).stop();
 		var changeValue = event.target.get('value');
 		var opt = event.target.getParent().id.split("_");
 		if (opt.length == 1) {
-			morphTabs.options[opt[0]] = changeValue;
+			fx.elSwap.options[opt[0]] = changeValue;
 		} else {
-			morphTabs.options[opt[0]][opt[1]] = changeValue;
+			options = {};
+			options[opt[1]] = changeValue
+			fx.elSwap.changeFx('all', options);
 		}
 	}
 });

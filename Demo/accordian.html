@@ -7,172 +7,79 @@
 	<title>Fx.Tabs Accordian Demo</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<title>mooForms demo | Shaun Freeman</title>
-	<script type="text/javascript" src="./js/mootools-1.2-core.js"></script>
-	<script type="text/javascript" src="./js/mootools-1.2-more.js"></script>
+	<title>Fx.Tabs demo | Shaun Freeman</title>
+	<script type="text/javascript" src="./js/mootools-1.2.4-core.js"></script>
+	<script type="text/javascript" src="./js/mootools-1.2.4.2-more.js"></script>
+	<script type="text/javascript" src="./js/Fx.MorphElement.js"></script>
+	<script type="text/javascript" src="./js/ElementSwap.js"></script>
+	<script type="text/javascript" src="./js/Fx.ElementSwap.js"></script>
+	<script type="text/javascript" src="./js/Tabs.js"></script>
 	<script type="text/javascript" src="../Source/Fx.Tabs.js"></script>
 	<script type="text/javascript" src="./js/selectTrans.js"></script>
-	<link href="./css/morphtabs.css" rel="stylesheet" type="text/css" />
+	<link href="./css/tabs.css" rel="stylesheet" type="text/css" />
 
 	<script>
 
 		window.addEvent('domready', function() {
 	
-			var fxTabs = new Fx.Tabs('morphTabs', {
-				width: '80%',
-				height: '250px',
-				activateTabFunction: function (tab) {
-					switch (tab) {
-						case 'my_work':
-							//create our Accordion instance
-							var myAccordion = new Accordion($('accordion'), 'h3.toggler', 'div.element', {
+			var fxTabs = new Fx.Tabs();
+			
+			var myAccordion = new Fx.Accordion($('accordion'), 'h3.toggler', 'div.element', {
 
-								opacity: false,
-								onActive: function(toggler, element){
-
-									toggler.setStyle('color', '#41464D');
-								},
-
-								onBackground: function(toggler, element){
-
-									toggler.setStyle('color', '#528CE0');
-
-								},
-								onComplete: function(toggler, element) {
-									var myFx = new Fx.Scroll($(tab)).toElement(toggler);
-								}
-							});
-							break;
-					}
+				opacity: false,
+				onActive: function(toggler, element){
+			
+					toggler.setStyle('color', '#41464D');
+				},
+			
+				onBackground: function(toggler, element){
+			
+					toggler.setStyle('color', '#528CE0');
+			
+				},
+				onComplete: function(toggler, element) {
+					var myFx = new Fx.Scroll($('my_work')).toElement(toggler);
 				}
 			});
 			
-			var selectTransitions = new selectTrans('morphtabs_transitions', fxTabs);
+			var selectTransitions = new selectTrans('tabs_transitions', fxTabs);
 			
 		});
 
 	</script> 
 	<style>
-	body {
-		margin: 0px;
-		padding: 0px;
-		border: 0px;
-	}
-	h1 {
-		margin: 10px;
-	}
-	#morphTabs {
-		margin-left: auto;
-		margin-right: auto;
-	}
-	#morphtabs_transitions {
-		height: 102px;
-		width: 832px;
-		padding: 10px 10px 10px 10px;
-		background-color: #00f;
-		margin: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		overflow: hidden;
-	}
-	#morphtabs_transitions p {
-		color: #000;
-	}
-	#morphtabs_transitions div {
-		border: 1px solid #fff;
-	}
-	#morphtabs_transitions  {
-		border: 1px solid #fff;
-	}
-	.changeTrans {
-		position:relative;
-		width: 200px;
-		height: 100px;
-		text-align:center;
-	}
-	#changeTransition_transition {}
-	#changeTransition_duration {
-		top: -102px;
-		left: 210px;
-	}
-	#panelStartFx {
-		top: -204px;
-		left: 420px;
-	}
-	#panelEndFx {
-		top: -306px;
-		left:630px
+	#tabs {
+		width:80%;
+		height:278px;
 	}
 	
-	/* Accordion */
-	#accordion {
-
-		margin:20px 0px;
-
+	.tabs_panelwrap {
+		width: 80%;
+		height: 250px;
 	}
-
-
-
-	h3.toggler {
-
-		cursor: pointer;
-
-		border: 1px solid #f5f5f5;
-
-		border-right-color: #ddd;
-
-		border-bottom-color: #ddd;
-
-		font-family: 'Andale Mono', sans-serif;
-
-		font-size: 12px;
-
-		background: #D2E0E6;
-
-		color: #528CE0;
-
-		margin: 0 0 4px 0;
-
-		padding: 3px 5px 1px;
-
+			
+	.tabs_panel {
+		width: 80%;
+		height: 250px;
 	}
-
-
-
-	div.element p, div.element h4 {
-
-		margin:0px;
-
-		padding:4px;
-
-	}
-
-
-
-	blockquote {
-
-		padding:5px 20px;
-
-	}
-	
 	</style>
 </head>
 <body>
 	<!-- content starts here -->
 	<h1>Fx.Tabs Accordian Demo</h1>
 	
-	<div id="morphtabs_transitions">
+	<div id="tabs_transitions">
 		<div id="changeTransition_transition" class="changeTrans"><p>Fx.Transition: </p></div>
 		<div id="changeTransition_duration" class="changeTrans"><p>Fx.Transition duration: </p></div>
-		<div id="panelStartFx" class="changeTrans"><p>StartFx: </p></div>
-		<div id="panelEndFx" class="changeTrans"><p>EndFx: </p></div>
+		<div id="startFx" class="changeTrans"><p>StartFx: </p></div>
+		<div id="endFx" class="changeTrans"><p>EndFx: </p></div>
 	</div>
 			
-	<div id="morphTabs">
+	<div id="tabs">
 
 		<!-- tab headings -->
 
-		<ul class="morphtabs_title">
+		<ul class="tabs_title">
 			<li title="my_work">My Work</li>
 			<li title="about_me">About Me</li>
 
@@ -181,7 +88,7 @@
 
 		<!-- Tab1 content -->
 
-		<div id="my_work" class="morphtabs_panel">
+		<div id="my_work" class="tabs_panel">
 			<h1>Tab 1</h1>
 			<div id="accordion">
 			<h3 class="toggler">History</h3>
@@ -218,14 +125,14 @@
 
 		<!-- Tab2 content -->
 
-		<div id="about_me" class="morphtabs_panel">
+		<div id="about_me" class="tabs_panel">
 			<h1>Tab 2</h1>
 			<p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
 		</div>
 			
 		<!-- Tab2 content -->
 
-		<div id="contact" class="morphtabs_panel">
+		<div id="contact" class="tabs_panel">
 			<h1>Tab 3</h1>
 			<p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
 		</div>
