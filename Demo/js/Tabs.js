@@ -40,7 +40,6 @@ var Tabs = new Class({
 		
 	initialize: function(options) {
 		this.setOptions(options);
-		console.log(options)
 		this.tabs = $$(this.options.tabs);
 		
 		this.getSwap();
