@@ -42,7 +42,7 @@ How to use
 	* slide:left
 	* slide:right
 	* fade
-    * appear
+	* appear
 
 * panelEndFx: (*string*), same as panelStartFx but for the type of effect when transition ends. See panelStartFx for options (Default: 'blind:right')
 * mouseOverClass: (*string*), The CSS Class name you want to use when a tab is mousedover (Default: 'over')
@@ -62,7 +62,7 @@ How to use
 
 	#JS
 	window.addEvent('domready', function() {
-        var fxTabs = new Fx.Tabs('id_of_container', {options});
+		var fxTabs = new Fx.Tabs('id_of_container', {options});
 	});
 
 ###The XHTML part
