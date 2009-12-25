@@ -5,11 +5,10 @@ description: Handles the scripting for a common UI layout; the tabbed box.
 authors: Shaun Freeman
 license: MIT-style
 requires:
-    core:1.2
-    - Selectors
-    - DomReady
-    - Fx.Morph
-    - Fx.Transitions
+    fx_elementswap/1.0.2
+    - Fx.ElementSwap
+    tabs/1.0:
+    - Tabs
 provides: [Fx.Tabs]
 version: 2.0
 ...

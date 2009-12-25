@@ -19,3 +19,5 @@ version 1.4 - Fri Dec 12 2008
 		- line 59 : issue with lists in panel fixed.
 version 1.5 - Wed Dec 17 2009
 	- changed name to Fx.Tabs
+version 2.0 - Fri Dec 25 2009
+	- complete rewrite

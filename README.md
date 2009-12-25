@@ -1,9 +1,9 @@
 Fx.Tabs - An Advanced Tab Swapper
-====================================
+=================================
 
 Fx.Tabs is the new name for MorphTabs.
 
-Fx.Tabs is a complete clone of mooTabs by [silverscripting](http://www.silverscripting.com/mootabs/). I have updated it for mootools 1.2 and it will not work with mootool 1.11 and below.
+Fx.Tabs is a complete clone of mooTabs by [silverscripting](http://www.silverscripting.com/mootabs/). I have updated it for mootools 1.2.4 and it will not work with mootool 1.11 and below.
 
 I have also added some new effects which I hope you all will like!
 
@@ -14,7 +14,7 @@ Because Fx.Tabs is based heaverly on mootabs some of the options and documentati
 Requirements
 ------------
 
-* [MooTools Core 1.2](http://mootools.net/core): Selectors, DomReady, Fx.Morph, Fx.Transitions HTML.Request (and their dependencies)
+* [MooTools Core 1.2.4](http://mootools.net/core): Selectors, DomReady, Fx.Morph, Fx.Transitions HTML.Request (and their dependencies)
 
 How to use
 ----------

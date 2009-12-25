@@ -4,12 +4,12 @@ name: Fx.MorphElement.js
 description: Creates a morph effect on any element using predefined styles.
 authors: Shaun Freeman
 requires:
-    core:1.2.4:
+    core/1.2.4:
     - Fx.Morph
     - Fx.Transitions
 provides: [Fx.MorphElement, Fx.MorphElement.Effects]
 license: MIT-style license
-version: 1.0.2
+version: 1.0.3
 ...
 */
 
@@ -47,9 +47,8 @@ Fx.MorphElement = new Class({
 		
 		this.element.setStyle('overflow', 'auto');
 		
-		this.element.store('fxEffect:flag', 'hide');
-		
 		if (this.options.hideOnInitialize) {
+			this.element.store('fxEffect:flag', 'hide');
 			this.start(this.options.hideOnInitialize);
 		} else {
 			this.element.store('fxEffect:flag', 'show');

@@ -4,13 +4,7 @@ name: Tabs.js
 description: Handles the scripting for a common UI layout; the tabbed box. 
 authors: Shaun Freeman
 requires:
-    core/1.2.4
-    - Selectors
-    - DomReady
-    - HTML.Request
-    more/1.2.4
-    - URI
-    elementswap/1.0
+    elementswap/1.0.1:
     - ElementSwap
 provides: [Tabs]
 license: MIT-style license
@@ -40,6 +34,7 @@ var Tabs = new Class({
 		
 	initialize: function(options) {
 		this.setOptions(options);
+		
 		this.tabs = $$(this.options.tabs);
 		
 		this.getSwap();
@@ -78,7 +73,7 @@ var Tabs = new Class({
 		this.now = index;
 		this.tabs.removeClass(this.options.selectedClass);
 		this.tabs[this.elSwap.now].addClass(this.options.selectedClass);
-		this.fireEvent('onActive', [this.tabs[this.now], index]);
+		this.fireEvent('onActive', [index, this.tabs[this.now]]);
 		return this;
 	},
 	
