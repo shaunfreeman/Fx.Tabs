@@ -9,100 +9,164 @@ I have also added some new effects which I hope you all will like!
 
 Because Fx.Tabs is based heaverly on mootabs some of the options and documentation is the same, but there are some important changes to note.
 
+Inherits methods, properties, options and events from [Tabs][].
+
 ![Screenshot](http://github.com/vincentbluff/Fx.Tabs/raw/master/screenshot.png)
+
+###Extends
+* [Tabs][]
 
 Requirements
 ------------
 
-* [MooTools Core 1.2.4](http://mootools.net/core): Selectors, DomReady, Fx.Morph, Fx.Transitions HTML.Request (and their dependencies)
+* [MooTools Core 1.2.4](http://mootools.net/core): Element.Event, Selectors, DomReady, Fx.Morph, Fx.Transitions and their dependencies
+* [fx.MorphElement][] and its dependencies
+* [ElementSwap][] and its dependencies
+* [Fx.ElementSwap][] and its dependencies
+* [Tabs][] and its dependencies
 
 How to use
 ----------
 
 ### Syntax
-	new Fx.Tabs('element_id', {options});
+	new Fx.Tabs([options]);
 
 ### Arguments
 
-1. element_id - (*element*) the id of the main div container.
-2. options - (*options*) a key/value set of options.
-
-### Options
-* width: (*string*), the width of the main DIV container. Changed as a string so you can use "200px" or "200%" if you want. (Default: '300px')
-* height: (*string*), the height of the main DIV container. Not recommended to use a % height here as it will most likely come out ugly (Default: '200px')
-* changeTransition: An Fx.Transitions object. see mootools Fx for options. (Default: {transition: 'linear', duration, 'long'})
-* panelStartFx: (*string*), the type of effect when transition starts. (Default: 'blind:left') Can any one of:
-
-	* blind:up
-	* blind:down
-	* blind:left
-	* blind:right
-	* slide:up
-	* slide:down
-	* slide:left
-	* slide:right
-	* fade
-	* appear
-
-* panelEndFx: (*string*), same as panelStartFx but for the type of effect when transition ends. See panelStartFx for options (Default: 'blind:right')
-* mouseOverClass: (*string*), The CSS Class name you want to use when a tab is mousedover (Default: 'over')
-* activateOnLoad: (*string*), can be set to 'first' to activate the first tab on load, 'none' to leave all the tabs hidden on load, or any tab's title to activate this tab on load (Default: 'first')
-* slideShow: (*boolean*), whether to start the tabs in slideshow mode or not. (Default: false)
-* slideShowDelay: (*interger*), the number of seconds to delay before showing next tab. (Default: 3)
-* activateTabFunction: (*function*), the function to call when a tab is activated, useful to execute any javascript events. It takes one argument which is the tab id. (Default: empty function)
-* evalScripts: (*boolean*), whether to execute any javascript in the panel div or not. (Default: false)
-* useAjax: (*boolean*), Whether you want to use Ajax to retrive tab content or not. (Default: false)
-* ajaxUrl: (*string*), The url of the server-side script to use. (Default: '')
-* ajaxOptions: (*object*), The object containing the options for the Ajax request (Default: {method:'get', evalScripts: true})
-* ajaxLoadingText: (*string*), The text to show while content is loading (Default: 'Loading...').
+1. options - (*object*, optional) An object with options. See:
+	- [Tabs][]
+	- [Fx.ElementSwap][]
+	- [ElementSwap][]
+	- [fx.MorphElement][]
+for all available options.
 
 ### Example
 
-###The JavaScript part
+### The JavaScript part
 
 	#JS
 	window.addEvent('domready', function() {
-		var fxTabs = new Fx.Tabs('id_of_container', {options});
+		var fxTabs = new Fx.Tabs();
 	});
 
-###The XHTML part
+### The XHTML part
 
 	#HTML
-	<div id="id_of_container">
+	<div id="tabs">
+
 		<!-- tab headings -->
-		<ul class="morphtabs_title">
-			<li title="Tab1">Tab1</li>
-			<li title="Tab2">Tab2</li>
-			<li title="Tab3">Tab3</li>
+
+		<ul class="tabs_title">
+			<li title="my_work">My Work</li>
+			<li title="about_me">About Me</li>
+
+			<li title="contact">Contact</li>
 		</ul>
-		<!-- Tab 1 content -->
-		<div id="Tab1" class="morphtabs_panel">
-			Tab 1 content   
+
+			
+		<!-- Tab1 content -->
+
+		<div id="my_work" class="tabs_panel">
+			<h1>Tab 1</h1>
+			<p>content</p>
 		</div>
+
 		<!-- Tab2 content -->
-		<div id="Tab2" class="morphtabs_panel">
-			Tab 2 content   
-			</div>
-			<!-- Tab 3 content -->
-			<div id="Tab3" class="morphtabs_panel">
-			Tab 3 content   
+
+		<div id="about_me" class="tabs_panel">
+			<h1>Tab 2</h1>
+			<p>content</p>
 		</div>
+			
+		<!-- Tab3 content -->
+
+		<div id="contact" class="tabs_panel">
+			<h1>Tab 3</h1>
+			<p>content</p>
+		</div>
+	
 	</div>
 
 ###The CSS part
-Customizing the look of the tabs require a certain knowledge of CSS. What I would suggest is to look at the examples of tabs in the the Demo folder, they each use a different CSS file that you can download and they should be a good starting point.
 
-Some important classes to keep in mind:
+Customizing the look of the tabs require a certain knowledge of CSS. What I would suggest is to look at the examples of tabs in the the Demo folder, they should be a good starting point.
 
-* morphtabs_title: the base class for the unordered list, not much to do here
-* morphtabs_title li: the class for the li elements of the unordered list, this one is fun to mess with...
-* morphtabs_title li.active: the class for the currently active tab, again, have fun with this one...
-* morphtabs_title li.over: the class for the mouseover effect, again, have fun with this one....
-* morphtabs_panelwrap: the class for the panelwrap, which allows for certain effects to display correctly. Becareful with this one as messing with the default setup might give some unexpected results!
-* morphtabs_panel: the class for the panel divs. Feel free to mess with the colors, font etc..
+#### Example
 
-In most cases, you can play with the fonts and colors without any consequences, but if you start messing with the position, display, height, etc.. I can't guarantee that the result will look good (or that it will work at all!). This is why I would suggest you to read up a bit on CSS if you are new to it, before you start styling the tabs.
+	#CSS
+	#tabs {
+	position:relative;
+	width:300px;
+	height:200px;
+	overflow:hidden;
+	}
+	
+	.tabs_title {
+		list-style-image: none;
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+		height: 24px;
+	}
+	
+	.tabs_title li {
+		float: left;
+		background-color: #3975BD;
+		padding: 2px 8px 2px 8px;
+		margin-right: 2px;
+		cursor: pointer;
+		color: #fff;
+		font-family: "Trebuchet MS";
+		font-size: 12px;
+		height: 24px;
+		line-height: 24px;
+	}
+	
+	.tabs_title a {
+		text-decoration:none;
+		color: #fff;
+	}
+	
+	.tabs_title li.over {
+		font-weight: bold;
+	}
+	
+	.tabs_title li.active {
+		background-color: #49A8EC;
+	}
+	
+	.tabs_panelwrap {
+		position: absolute;
+		top:28px;
+		overflow: hidden;
+		width:300px;
+		height:172px;
+	}
+	
+	.tabs_panel {
+		/*position:absolute;
+		top:28px;*/
+		width:300px;
+		height:172px;
+		display:none;
+		overflow: auto;
+		background-color: #49A8EC;
+		color: #fff;
+		clear: both;
+	}
+	
+	.tabs_panel.active {
+		display: block;
+	}
+	
+	.tabs_panel p {
+		margin-left:5px;
+	}
 
-###A note on using AJAX:
+The styling is completly left to you this is why I would suggest you to read up a bit on CSS if you are new to it, before you start styling the tabs.
 
-If you wish to use Ajax, please leave the method to GET and don't change the "update" option. Also, feel free to use a cool ajax spinner image in the ajaxLoadingText if you want, it can take HTML...
+[$$]: http://www.mootools.net/docs/core/Element/Element#dollars
+[ElementSwap]: http://www.mootools.net/forge/p/elementswap
+[Fx.ElementSwap]: http://www.mootools.net/forge/p/fx_elementswap
+[Tabs]: http://www.mootools.net/forge/p/tabs
+[Fx.MorphElement]: http://www.mootools.net/forge/p/fx_morphelement
