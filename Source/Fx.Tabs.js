@@ -5,7 +5,7 @@ description: Handles the scripting for a common UI layout; the tabbed box.
 authors: Shaun Freeman
 license: MIT-style
 requires:
-    fx_elementswap/1.0.2
+    fx_elementswap/1.0.2:
     - Fx.ElementSwap
     tabs/1.0:
     - Tabs
