@@ -13,6 +13,8 @@ Inherits methods, properties, options and events from [Tabs][].
 
 ![Screenshot](http://github.com/vincentbluff/Fx.Tabs/raw/master/screenshot.png)
 
+[jsFiddle Demo](http://jsfiddle.net/ctJpJ/3/)
+
 ###Extends
 * [Tabs][]
 
