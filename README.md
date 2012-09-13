@@ -11,7 +11,7 @@ Because Fx.Tabs is based heaverly on mootabs some of the options and documentati
 
 Inherits methods, properties, options and events from [Tabs][].
 
-![Screenshot](http://github.com/vincentbluff/Fx.Tabs/raw/master/screenshot.png)
+![Screenshot](http://github.com/shaunfreeman/Fx.Tabs/raw/master/screenshot.png)
 
 [jsFiddle Demo](http://jsfiddle.net/ctJpJ/3/)
 
